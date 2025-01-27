@@ -54,22 +54,6 @@ npm start
 
 5. Open your browser and navigate to:
    http://localhost:3000
-📂 Folder Structure: 
-
-MediEase/
-├── client/                # Frontend application
-│   ├── src/
-│   │   ├── components/    # Reusable UI components
-│   │   ├── pages/         # Application pages
-│   │   ├── styles/        # CSS stylesheets
-│   └── package.json       # Frontend dependencies
-├── server/                # Backend application
-│   ├── routes/            # API routes
-│   ├── models/            # MongoDB schemas
-│   ├── controllers/       # Business logic
-│   └── package.json       # Backend dependencies
-├── README.md              # Project documentation
-└── .gitignore             # Ignored files
 
 
 🌟 Key Highlights

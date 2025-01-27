@@ -34,23 +34,33 @@
    git clone https://github.com/sivasaidwarapureddy/mediease.git
    cd mediease
 2. Install dependencies for both frontend and backend:
-    cd client
-    npm install
-    cd ../server
-    npm install
+    ```bash
+       cd client
+        npm install
+       cd ../server
+        npm install
 3.Configure the environment variables:
+   
 Create a .env file in the server directory and add the following:
-   PORT=5000
-   MONGO_URI=<your_mongodb_connection_string>
+     ```bash
+               
+                 PORT=5000
+                 MONGO_URI=<your_mongodb_connection_string>
+
+   
 4. Run the application:
 
 Start the backend server:
-cd server
-npm start
+    ```bash
+       
+      cd server
+      npm start
 
-Start the frontend:
-cd client
-npm start
+   Start the frontend:
+    ```bash
+       
+      cd client
+      npm start
 
 5. Open your browser and navigate to:
    http://localhost:3000

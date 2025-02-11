@@ -1,0 +1,41 @@
+# Node.js dependencies
+node_modules/
+.env
+config.json
+# Optional npm cache
+.npm/
+
+# Environment variable files
+
+
+# Logs
+*.log
+logs/
+
+# Dependency directories
+jspm_packages/
+
+# Test directories
+coverage/
+
+# Build output
+dist/
+build/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE and editor directories
+.vscode/
+.idea/
+
+# Package-lock and yarn.lock (optional)
+package-lock.json
+yarn.lock
+
+# Optional: Ignore compiled files
+*.tsbuildinfo
+
+# Ignore all .env files in case there are multiple (e.g., .env.local, .env.production)
+.env.*

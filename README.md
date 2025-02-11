@@ -20,5 +20,5 @@ git clone https://github.com/sivasaidwarapureddy/doctorapp.git
 
 2. Install dependencies:
     npm install
-
-
+3. run project :
+    npm run dev

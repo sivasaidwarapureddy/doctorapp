@@ -76,8 +76,9 @@ const BookingPage = () => {
   const handleAvailability = async () => {
     try {
       dispatch(showLoading());
+      const API_URL = process.env.REACT_APP_API_URL;
       const res = await axios.post(
-        "/api/v1/user/booking-availbility",
+         `${API_URL}/api/v1/user/booking-availbility`,
         { doctorId: params.doctorId, date, time },
         {
           headers: {

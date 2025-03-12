@@ -45,8 +45,10 @@ const BookingPage = () => {
       }
 
       dispatch(showLoading());
+      
+      const API_URL = process.env.REACT_APP_API_URL;
       const res = await axios.post(
-        "/api/v1/user/book-appointment",
+        `${API_URL}/api/v1/user/book-appointment`,
         {
           doctorId: params.doctorId,
           userId: user._id,

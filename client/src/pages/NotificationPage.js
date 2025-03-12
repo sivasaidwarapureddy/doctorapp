@@ -14,8 +14,9 @@ const NotificationPage = () => {
   const handleMarkAllRead = async () => {
     try {
       dispatch(showLoading());
+      const API_URL = process.env.REACT_APP_API_URL;
       const res = await axios.post(
-        "/api/v1/user/get-all-notification",
+        `${API_URL}/api/v1/user/get-all-notification`,
         {
           userId: user._id,
         },

@@ -19,8 +19,9 @@ const BookingPage = () => {
 
   const getUserData = async () => {
     try {
+      const API_URL = process.env.REACT_APP_API_URL;
       const res = await axios.post(
-        `/api/v1/doctor/getDoctorById`,
+        `${API_URL}/api/v1/doctor/getDoctorById`,
         { doctorId: params.doctorId },
         {
           headers: {

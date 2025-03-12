@@ -3,43 +3,44 @@ import React from "react";
 import Layout from "../../components/Layout";
 import axios from "axios";
 import { Table, message } from "antd";
-
+const API_URL = process.env.REACT_APP_API_URL;
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
 
-  const getDoctors = async () => {
-    try {
-      const res = await axios.get("/api/v1/admin/getAllDoctors", {
+
+const getDoctors = async () => {
+  try {
+    const res = await axios.get(`${API_URL}/api/v1/admin/getAllDoctors`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    if (res.data.success) {
+      setDoctors(res.data.data);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const handleAccountStatus = async (record, status) => {
+  try {
+    const res = await axios.post(
+      `${API_URL}/api/v1/admin/changeAccountStatus`,
+      { doctorId: record._id, userId: record.userId, status: status },
+      {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-      });
-      if (res.data.success) {
-        setDoctors(res.data.data);
       }
-    } catch (error) {
-      console.log(error);
+    );
+    if (res.data.success) {
+      message.success(res.data.message);
     }
-  };
-  //======handle Account===
-  const handleAccountStatus = async (record, status) => {
-    try {
-      const res = await axios.post(
-        "/api/v1/admin/changeAccountStatus",
-        { doctorId: record._id, userId: record.userId, status: status },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-      if (res.data.success) {
-        message.success(res.data.message);
-      }
-    } catch (error) {
-      message.error("Something went Wrong");
-    }
-  };
+  } catch (error) {
+    message.error("Something went Wrong");
+  }
+};
 
   useEffect(() => {
     getDoctors();

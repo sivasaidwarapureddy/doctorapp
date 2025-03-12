@@ -14,7 +14,8 @@ const Login = () => {
   const onfinishHandler = async (values) => {
     try {
       dispatch(showLoading());
-      const res = await axios.post("/api/v1/user/login", values);
+      const API_URL = process.env.REACT_APP_API_URL;
+      const res = await axios.post(`${API_URL}/api/v1/user/login`, values);
       window.location.reload();
       dispatch(hideLoading());
       if (res.data.success) {

@@ -15,7 +15,17 @@ connectDB();
 const app = express();
 
 //middlewares
-app.use(cors()); // Enable CORS
+const cors = require("cors");
+
+// Allow requests from Vercel frontend
+app.use(
+  cors({
+    origin: ["https://doctorapp-self.vercel.app"], // Change to your frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 app.use(morgan("dev"));
 

@@ -16,9 +16,12 @@ const ApplyDoctor = () => {
   const handleFinish = async (values) => {
     try {
       dispatch(showLoading());
+      
+      // Use environment variable
+      const API_URL = process.env.REACT_APP_API_URL;
+  
       const res = await axios.post(
-        "/api/v1/user/apply-doctor",
-
+        `${API_URL}/api/v1/user/apply-doctor`,
         {
           ...values,
           userId: user._id,
@@ -33,7 +36,9 @@ const ApplyDoctor = () => {
           },
         }
       );
+  
       dispatch(hideLoading());
+  
       if (res.data.success) {
         message.success(res.data.message);
         navigate("/");
@@ -42,10 +47,11 @@ const ApplyDoctor = () => {
       }
     } catch (error) {
       dispatch(hideLoading());
-      console.log(error);
+      console.log("Error:", error);
       message.error("Something went wrong");
     }
   };
+  
   return (
     <Layout>
       <h1 className="text-center">Apply Doctor</h1>

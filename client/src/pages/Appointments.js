@@ -10,7 +10,8 @@ const Appointments = () => {
   const token = localStorage.getItem("token");
   const getAppointments = async () => {
     try {
-      const res = await axios.get("/api/v1/user/user-appointments", {
+      const API_URL = process.env.REACT_APP_API_URL;
+      const res = await axios.get(`${API_URL}/api/v1/user/user-appointments`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

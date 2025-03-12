@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,16 +9,13 @@ export default function ProtectedRoute({ children }) {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
 
-  //get user
-
-  const getUser = async () => {
+  // ✅ useCallback to prevent infinite loop
+  const getUser = useCallback(async () => {
     try {
       dispatch(showLoading());
       const res = await axios.post(
-        "/api/v1/user/getUserData",
-        {
-          token: localStorage.getItem("token"),
-        },
+        `${process.env.REACT_APP_API_URL}/api/v1/user/getUserData`,
+        {},
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -29,7 +26,6 @@ export default function ProtectedRoute({ children }) {
       if (res.data.success) {
         dispatch(setUser(res.data.data));
       } else {
-        <Navigate to="/login" />;
         localStorage.clear();
       }
     } catch (error) {
@@ -37,7 +33,7 @@ export default function ProtectedRoute({ children }) {
       localStorage.clear();
       console.log(error);
     }
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     if (!user) {
@@ -45,9 +41,10 @@ export default function ProtectedRoute({ children }) {
     }
   }, [user, getUser]);
 
-  if (localStorage.getItem("token")) {
-    return children;
-  } else {
+  // ✅ Check token properly
+  if (!localStorage.getItem("token")) {
     return <Navigate to="/login" />;
   }
+
+  return children;
 }

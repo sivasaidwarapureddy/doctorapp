@@ -5,10 +5,11 @@ import { Table } from "antd";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const getUsers = async () => {
     try {
-      const res = await axios.get("/api/v1/admin/getAllUsers", {
+      const res = await axios.get(`${API_URL}/api/v1/admin/getAllUsers`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -17,13 +18,13 @@ const Users = () => {
         setUsers(res.data.data);
       }
     } catch (error) {
-      console.log(error);
+      console.log("Error fetching users:", error);
     }
   };
 
   useEffect(() => {
     getUsers();
-  });
+  }, []);
 
   const columns = [
     {

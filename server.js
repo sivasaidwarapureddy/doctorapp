@@ -17,7 +17,7 @@ const app = express();
 //middlewares
 app.use(
   cors({
-    origin: ["http://localhost:3000"], // Change to your frontend URL
+    origin: ["https://doctorapp-self.vercel.app"], // Change to your frontend URL
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })

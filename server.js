@@ -1,26 +1,28 @@
 const express = require("express");
 const colors = require("colors");
-const moragan = require("morgan");
+const morgan = require("morgan");
 const dotenv = require("dotenv");
+const cors = require("cors"); // Import CORS
 const connectDB = require("./config/db");
 
-//dotenv conig
+//dotenv config
 dotenv.config();
 
 //mongodb connection
 connectDB();
 
-//rest obejct
+//rest object
 const app = express();
 
 //middlewares
+app.use(cors()); // Enable CORS
 app.use(express.json());
-app.use(moragan("dev"));
+app.use(morgan("dev"));
 
 //routes
-app.get("/" , (req,res) =>{
-  res.send("Hi, I am from backend server!!!")
-})
+app.get("/", (req, res) => {
+  res.send("Hi, I am from backend server!!!");
+});
 app.use("/api/v1/user", require("./routes/userRoutes"));
 app.use("/api/v1/admin", require("./routes/adminRoutes"));
 app.use("/api/v1/doctor", require("./routes/doctorRoutes"));
@@ -30,7 +32,6 @@ const port = process.env.PORT || 8080;
 //listen port
 app.listen(port, () => {
   console.log(
-    `Server Running in ${process.env.NODE_MODE} Mode on port ${process.env.PORT}`
-      .bgCyan.white
+    `Server Running in ${process.env.NODE_MODE} Mode on port ${port}`.bgCyan.white
   );
 });

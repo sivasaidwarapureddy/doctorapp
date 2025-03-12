@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "proxy": "http://127.0.0.1:8080/",
+  "proxy": "https://doctorapp-production-8637.up.railway.app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

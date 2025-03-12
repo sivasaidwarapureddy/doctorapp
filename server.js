@@ -19,7 +19,7 @@ app.use(moragan("dev"));
 
 //routes
 app.get("/" , (req,res) =>{
-  res.send("Hi, I am from backend server!!")
+  res.send("Hi, I am from backend server!!!")
 })
 app.use("/api/v1/user", require("./routes/userRoutes"));
 app.use("/api/v1/admin", require("./routes/adminRoutes"));

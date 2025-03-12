@@ -14,8 +14,6 @@ connectDB();
 //rest object
 const app = express();
 
-//middlewares
-const cors = require("cors");
 
 // Allow requests from Vercel frontend
 app.use(

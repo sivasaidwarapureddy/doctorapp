@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "proxy": "https://doctorapp-production-8637.up.railway.app",
+  "proxy": "https://doctorapp-production-8637.up.railway.app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

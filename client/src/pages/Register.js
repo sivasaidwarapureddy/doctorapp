@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../redux/features/alertSlice";
-const API_URL = process.env.REACT_APP_API_URL;
+
 const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

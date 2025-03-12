@@ -14,16 +14,14 @@ connectDB();
 //rest object
 const app = express();
 
-
-// Allow requests from Vercel frontend
+//middlewares
 app.use(
   cors({
-    origin: ["https://doctorapp-self.vercel.app"], // Change to your frontend URL
+    origin: ["http://localhost:3000"], // Change to your frontend URL
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
-
 app.use(express.json());
 app.use(morgan("dev"));
 

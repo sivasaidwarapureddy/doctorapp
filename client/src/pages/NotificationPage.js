@@ -42,8 +42,9 @@ const NotificationPage = () => {
   const handleDeleteAllRead = async () => {
     try {
       dispatch(showLoading());
+      const API_URL = process.env.REACT_APP_API_URL;
       const res = await axios.post(
-        "/api/v1/user/delete-all-notification",
+        `${API_URL}/api/v1/user/delete-all-notification`,
         { userId: user._id },
         {
           headers: {
